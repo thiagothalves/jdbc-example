@@ -22,8 +22,8 @@ public class EmployeeRepositoryDataBaseImpl implements RepositoryDataBase<Employ
     @Override
     public List<Employee> findAll() {
         var sql = """
-                SELECT id, name, release_date
-                FROM movie
+                SELECT id, name, email, birth_date
+                FROM employee
                 LIMIT 100;
                  """;
         return jdbcTemplate.query(sql, new EmployeeMapper());
@@ -32,7 +32,7 @@ public class EmployeeRepositoryDataBaseImpl implements RepositoryDataBase<Employ
     @Override
     public int insert(Employee entity) {
         var sql = """
-                INSERT INTO movie(name, email, birth_date)
+                INSERT INTO employee(name, email, birth_date)
                 VALUES (?, ?, ?);
                  """;
         return jdbcTemplate.update(
@@ -44,7 +44,7 @@ public class EmployeeRepositoryDataBaseImpl implements RepositoryDataBase<Employ
     @Override
     public int remove(Long id) {
         var sql = """
-                DELETE FROM movie
+                DELETE FROM employee
                 WHERE id = ?
                 """;
          return jdbcTemplate.update(sql, id);
@@ -53,8 +53,8 @@ public class EmployeeRepositoryDataBaseImpl implements RepositoryDataBase<Employ
     @Override
     public Optional<Employee> findOne(Long id) {
         var sql = """
-                SELECT id, name, release_date
-                FROM movie
+                SELECT id, name, email, birth_date
+                FROM employee
                 WHERE id = ?
                  """;
         return jdbcTemplate.query(sql, new EmployeeMapper(), id)
