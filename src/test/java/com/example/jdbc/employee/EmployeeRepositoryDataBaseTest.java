@@ -26,7 +26,7 @@ public class EmployeeRepositoryDataBaseTest {
 
     @Test
     public void insertEmployee() {
-        Employee employee = new Employee(10L, "Thiago", "thiago@gmail.com", LocalDate.now());
+        Employee employee = new Employee(null, "Thiago", "thiago@gmail.com", LocalDate.now());
         Integer insert = employeeRepositoryDataBase.insert(employee);
         Assertions.assertNotNull(insert);
     }
