@@ -1,9 +1,10 @@
 package com.example.jdbc.core;
 
+import com.example.jdbc.util.AbstractEntity;
+
 import java.time.LocalDate;
 
-public class Employee {
-    private final Long id;
+public class Employee extends AbstractEntity {
     private final String name;
     private final String email;
     private final LocalDate birthDate;
@@ -13,10 +14,6 @@ public class Employee {
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {
